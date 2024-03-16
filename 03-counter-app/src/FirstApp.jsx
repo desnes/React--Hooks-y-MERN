@@ -25,4 +25,4 @@ FirstApp.defaultProps = {
   name: 'Fernando Herrera',
   subTitle: 'No hay subtítulo',
   // title: 'No hay título',
-}
+} 
