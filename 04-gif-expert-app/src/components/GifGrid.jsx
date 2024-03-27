@@ -1,10 +1,30 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { getGifs } from '../helpers/getGifs';
+import { useEffect } from 'react';
+import { GifItem } from './GifItem';
+import { useFetchGifs } from '../hooks/useFetchGifs';
+
 
 export const GifGrid = ({category}) => {
+
+  const {images, isLoading} = useFetchGifs(category);
+  //console.log({isLoading});
+
   return (
     <>
         <h3>{category}</h3>
-        <p>Hola Mundo</p>
+        {
+          isLoading && <h2 className='animate__animated animate__flash'>Loading...</h2>
+        }
+        <div className='card-grid'>
+          {
+            images.map((image) => (
+              <GifItem 
+                key={ image.id }
+                {... image}/>
+            ))
+          }
+        </div>
     
     </>
   )
